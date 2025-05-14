@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Arquivos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="email"], input[type="password"], button, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .file-section {
+            margin-top: 20px;
+        }
+        .file-section h3 {
+            margin-bottom: 10px;
+        }
+        .file-section table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .file-section table th, .file-section table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .breadcrumbs {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        .breadcrumbs a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        ul {
+            list-style: disc inside;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        textarea {
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sistema de Arquivos</h1>
+    </header>
+    <div class="container">
+        <!-- TELA 1: Login -->
+        <div id="login">
+            <h2>Login</h2>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" placeholder="Digite seu e-mail">
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" placeholder="Digite sua senha">
+            </div>
+            <button type="button" onclick="showError()">Entrar</button>
+            <p id="error" class="error-message" style="display:none;">Erro: E-mail ou senha inválidos.</p>
+        </div>
+
+        <!-- TELA 2: Perfil Professor -->
+        <div id="perfil-professor" class="file-section">
+            <h2>Perfil Professor</h2>
+            <div class="breadcrumbs">
+                <a href="#">Home</a> > <a href="#">Pastas</a> > <a href="#">Documentos</a>
+            </div>
+            <button type="button">Criar Novo Diretório</button>
+            <h3>Seus Arquivos</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Tamanho</th>
+                        <th>Data de Inclusão</th>
+                        <th>Tipo</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Slide Aula 1</td>
+                        <td>2 MB</td>
+                        <td>13/05/2025</td>
+                        <td>PDF</td>
+                        <td><button>Baixar</button> <button>Excluir</button></td>
+                    </tr>
+                    <tr>
+                        <td>Lista Exercícios</td>
+                        <td>1.5 MB</td>
+                        <td>12/05/2025</td>
+                        <td>DOCX</td>
+                        <td><button>Baixar</button> <button>Excluir</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TELA 3: Perfil Aluno -->
+        <div id="perfil-aluno" class="file-section">
+            <h2>Perfil Aluno</h2>
+            <div class="breadcrumbs">
+                <a href="#">Home</a> > <a href="#">Pastas</a> > <a href="#">Material Didático</a>
+            </div>
+            <h3>Material Disponível</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Tamanho</th>
+                        <th>Data de Inclusão</th>
+                        <th>Tipo</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Apostila 1</td>
+                        <td>3 MB</td>
+                        <td>10/05/2025</td>
+                        <td>PDF</td>
+                        <td><button>Baixar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Planilha Notas</td>
+                        <td>2.5 MB</td>
+                        <td>11/05/2025</td>
+                        <td>XLSX</td>
+                        <td><button>Baixar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TELA 4: Ajuda / Suporte -->
+        <div id="ajuda">
+            <h2>Ajuda / Suporte</h2>
+            <h3>Perguntas Frequentes</h3>
+            <ul>
+                <li>Como faço login no sistema?</li>
+                <li>Como faço para incluir novos arquivos?</li>
+                <li>O que fazer se esquecer minha senha?</li>
+            </ul>
+            <h3>Links Úteis</h3>
+            <ul>
+                <li><a href="#">Tutorial de Login</a></li>
+                <li><a href="#">Como Incluir Arquivos</a></li>
+                <li><a href="#">Recuperação de Senha</a></li>
+            </ul>
+            <h3>Envie sua Dúvida</h3>
+            <div class="form-group">
+                <label for="duvida">Descreva seu problema:</label>
+                <textarea id="duvida" rows="4" placeholder="Escreva aqui..."></textarea>
+            </div>
+            <button type="button">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        function showError() {
+            document.getElementById('error').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
